@@ -8,10 +8,10 @@ export default class UsersController {
   }
 
   public async store({request}: HttpContextContract) {
-    const body = request.only(['email', 'pass'])
+    const body = request.only(['email', 'password'])
     const user = await User.create({
       email: body.email,
-      pass : body.pass
+      password : body.password
     })
     
     console.log(user.$isPersisted) // true
@@ -26,7 +26,7 @@ export default class UsersController {
 
   public async update({request}: HttpContextContract) {
     const userId = request.param('id')
-    const body = request.only(['email', 'pass'])
+    const body = request.only(['email', 'password'])
     const user = await User.findOrFail(userId)
     await user.merge(body).save()
 
@@ -41,3 +41,4 @@ export default class UsersController {
     return user
   }
 }
+

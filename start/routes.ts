@@ -25,18 +25,35 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', async () => {})
 
 Route.post('login', async ({ auth, request, response }) => {
-  const email = request.input('email')
-    const pass = request.input('pass')
+    const email = request.input('email')
+    const password = request.input('password')
   
+
   
     try {
-      const token = await auth.use('api').attempt(email, pass)
+
+      const token = await auth.use('api').attempt(email, password)
+      
       return token
     } 
-    catch {
-      return response.unauthorized('Invalid credentials')
-    }
+    catch (e) {
+      console.log()
+      
+      return response.unauthorized("invalid credentials")
+    } 
   })
+
+
+Route.get('dashboard', async ({ auth }) => {
+
+
+  await auth.use('api').authenticate()
+ 
+  auth.use('api').isLoggedIn 
+
+  return `Você esta logado! !`
+})
   
 
 Route.resource('users', 'UsersController') // atalho do adonis que uso para montar todas as rotas com 1 linha de code.
+Route.resource('clients', 'ClientsController')
