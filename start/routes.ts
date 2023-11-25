@@ -27,7 +27,7 @@ Route.get('/', async () => {})
 Route.post('login', async ({ auth, request, response }) => {
     const email = request.input('email')
     const password = request.input('password')
-  
+
 
   
     try {
@@ -37,7 +37,7 @@ Route.post('login', async ({ auth, request, response }) => {
       return token
     } 
     catch (e) {
-      console.log()
+      console.log(e)
       
       return response.unauthorized("invalid credentials")
     } 
@@ -45,7 +45,6 @@ Route.post('login', async ({ auth, request, response }) => {
 
 
 Route.get('dashboard', async ({ auth }) => {
-
 
   await auth.use('api').authenticate()
  
@@ -57,3 +56,6 @@ Route.get('dashboard', async ({ auth }) => {
 
 Route.resource('users', 'UsersController') // atalho do adonis que uso para montar todas as rotas com 1 linha de code.
 Route.resource('clients', 'ClientsController')
+Route.resource('adresses', 'AdressesController')
+Route.resource('products', 'ProductsController')
+Route.resource('sales', 'SaleController')
