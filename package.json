@@ -60,6 +60,7 @@
     "@adonisjs/lucid": "^18.4.2",
     "@adonisjs/repl": "^3.1.11",
     "adonis-lucid-soft-deletes": "^1.4.4",
+    "jsonwebtoken": "^9.0.2",
     "luxon": "^3.4.4",
     "mysql2": "^3.6.5",
     "phc-argon2": "^1.1.4",

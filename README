@@ -1,0 +1,33 @@
+O desfio foi todo desenvolvido em Node.js(adonis.js) usando como linguagem Typescript, conjunto com banco de dados MySQL, usei como ferramento auxiliar
+o workbench, e como teste de rotas usei Postman. 
+
+Como rodar:
+
+Se voce fizer um git clone do repositorio , pode digitar no console "npm i " para instalar os modulos dependentes para funcionamento do projeto
+No arquivo .env faremos a conexao com banco de dados.
+
+Faremos a criação das migrations, para o adonis/lucid criar as tables e colunas no seu bd, com o comando no terminal:
+"node ace migrations:run"
+
+Então rodaremos o server com o comando:
+"node ace serve --watch "
+
+Rotas:
+
+Rota (/), seria uma rota .get, onde é a page inial do projeto
+
+Rota (login)
+Nesta rota login usamos o metodo POST,que ela é usada para gerar um token que na rota dashboard usaremos para autentica-la, este token para ser
+gerado na rota login, fizemos a requisação do model User, pegando o login(email) e o password, implentado uma try cacth ,onde o try fara com que seja autorizado atraves de email e password do usuario ,se for autorizado, retornara o token, senao , cacth retornara uma mesagem de credencial invalida.
+
+Rota(dashboard)
+Rota usada onde acessamos para autenticação do token gerado na rota login. 
+onde pela estrategia 'api' ele busca a autenticação do usuario e concluindo o login.
+
+Routa.resource:
+São as rotas usadas para acessarmos os dados das migrations conectada com o model. Onde o metodo resource aplicado no adonisjs, nos  ajuda a 
+"abreviar" a codação, nao precisando especificar se é GET,POST,PUT,UPDATE,DELETE, ele 'encaixa' todos metodos na rota, fazendo a funcionalidade que sta
+explicita no model.
+
+Dificuldades:
+ - usei provedor oat, nao consguindo implementar totalmente o jwt.
