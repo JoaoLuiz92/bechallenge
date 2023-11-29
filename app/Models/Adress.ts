@@ -5,23 +5,28 @@ export default class Adress extends BaseModel {
   @column({ isPrimary: true })
   public id: number
   
-  @column({ isPrimary: true })
+
+  @column({  })
   public country: string
 
-  @column({ isPrimary: true })
+  @column({  })
   public state: string
 
-  @column({ isPrimary: true })
+  @column({  })
   public city: string
 
-  @column({ isPrimary: true })
+  @column({  })
   public neighborhood: string
 
-  @column({ isPrimary: true })
+  @column({  })
   public street: string
 
-  @column({ isPrimary: true })
+  @column({  })
   public number: number
+
+  @column({  })
+  public client_id: number
+  
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -29,3 +34,4 @@ export default class Adress extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 }
+

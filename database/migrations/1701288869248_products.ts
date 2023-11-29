@@ -6,16 +6,15 @@ export default class extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.string('prod_name',255).notNullable().unique()
-      table.double('pages').notNullable()
+      table.string('prod_name',255).notNullable()
       table.double('price').notNullable()
+      table.string('category',255).notNullable()
+      table.double('prod_amount').notNullable()
+      
 
-      /**
-       * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
-       */
-      table.timestamp('created_at', { useTz: true })
-      table.timestamp('updated_at', { useTz: true })  
-     })
+      table.timestamps(true,true)
+
+    })
   }
 
   public async down () {

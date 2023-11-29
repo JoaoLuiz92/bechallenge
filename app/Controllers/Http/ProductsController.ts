@@ -16,11 +16,12 @@ export default class ProductsController {
   }
 
   public async store({request}: HttpContextContract) {
-    const body = request.only(['prod_name','pages','price'])
+    const body = request.only(['prod_name','price','category','prod_amount'])
     const product = await Product.create({
       prod_name :body.prod_name,
-      pages :body.pages,
-      price :body.price
+      price :body.price,
+      category :body.category,
+      prod_amount :body.prod_amount
 
     })
       console.log(product.$isPersisted) // true

@@ -18,3 +18,5 @@ export default class Client extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 }
+
+module.exports

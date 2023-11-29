@@ -5,12 +5,14 @@ export default class Sale extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @column({ isPrimary: true })
-  public product: string
+  @column({})
+  public client_id: number
 
-  @column({ isPrimary: true })
-  public client: string
-
+  @column({})
+  public date: number
+  
+  @column({})
+  public total: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

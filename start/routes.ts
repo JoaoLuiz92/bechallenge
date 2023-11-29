@@ -40,8 +40,10 @@ Route.get('dashboard', async ({ auth }) => {
 })
   
 
-Route.resource('users', 'UsersController')// atalho do adonis que uso para montar todas as rotas com 1 linha de code.
+Route.resource('users', 'UsersController')
 Route.resource('clients', 'ClientsController')
 Route.resource('adresses', 'AdressesController')
+Route.resource('phones', 'PhonesController')
 Route.resource('products', 'ProductsController')
-Route.resource('sales', 'SaleController')
+Route.resource('sales', 'SalesController')
+Route.resource('sale_has_products', 'SaleHasProductsController')

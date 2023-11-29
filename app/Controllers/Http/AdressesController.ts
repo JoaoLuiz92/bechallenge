@@ -15,21 +15,20 @@ export default class AdressesController {
   }
 
   public async store({request}: HttpContextContract) {
-    const body = request.only(['country','state','city','neighborhood','street','number'])
-    const adress = await Adress.create({
-      country :body.country,
-      state :body.state,
-      city:body.city,
-      neighborhood :body.neighborhood,
-      street :body.street,
-      number :body.number
+    const body = request.only(['country', 'state', 'city', 'neighborhood', 'street', 'number', 'client_id'])
+  
+    // Fix the typo in the property name
+      const adress = await Adress.create({
+      country: body.country,
+      state: body.state,
+      city: body.city,
+      neighborhood: body.neighborhood,
+      street: body.street,
+      number: body.number,
+      client_id:body.client_id
     })
-
-      return adress
-    
-
-
-
+  
+    return adress
   }
 
   public async show({}: HttpContextContract) {
@@ -44,7 +43,11 @@ export default class AdressesController {
 
   }
 
-  public async destroy({}: HttpContextContract) {
+  public async destroy({request}: HttpContextContract) {
+    const adressId = request.param('id')
+    const adress = await Adress.findOrFail(adressId)
+    await adress.delete()
+    return adress
 
   }
 }
