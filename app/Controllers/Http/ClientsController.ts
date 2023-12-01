@@ -1,6 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Client from 'App/Models/Client'
-import Sale from 'App/Models/Sale'
+
 import SaleHasProduct from 'App/Models/SaleHasProduct'
 
 
@@ -31,7 +31,7 @@ export default class ClientsController {
 
   const sales = await SaleHasProduct.query()
     .where('client_id', client.id)
-    .select('product_id','sales_id','sell_amount','sell_total')
+    .select('prod_name','sales_id','sell_amount','sell_total')
     .exec();
 
   return { client, sales };

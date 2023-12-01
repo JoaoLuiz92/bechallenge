@@ -1,6 +1,7 @@
 Introdução:
 O desafio foi todo desenvolvido em Node.js (adonis.js) usando como linguagem Typescript, em conjunto com banco de dados MySQL, 
 usei como ferramenta auxiliar o workbench, e como teste de rotas, usei Postman. 
+
 Como rodar:
 Se você fizer um git clone do repositório, pode digitar no console "npm i" para instalar os módulos dependentes para o adequado 
 funcionamento do projeto. No arquivo .env faremos a conexão com banco de dados.
@@ -18,8 +19,7 @@ Nesta rota login usamos o método POST, ela é usada para gerar um token que ser
  retornara o token, senao , cacth retornara uma mesagem de credencial invalida.
 
 Rota (dashboard):
-Rota usada onde acessamos para autenticação do token gerado na rota login. 
-Onde pela estrategia 'api' ele busca a autenticação do usuario e concluindo o login.
+Rota usada para autenticação do token gerado na rota login ,onde pela estrategia 'api' ela busca a autenticação do usuario e concluindo o login.
 Usando o postman para rodar a rota, colocamos o token no header, porem antes do token, colocamos desse modo "Bearer (Token) ", para autentica-lo
 
 Routa.resource:
@@ -29,4 +29,5 @@ explicita no model.
 
 Dificuldades:
  - usei provedor oat, nao consguindo implementar totalmente o jwt.
+ - não tive sucesso na conclusão do soft delete
  

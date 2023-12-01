@@ -12,7 +12,7 @@ export default class SaleHasProduct extends BaseModel {
   public sales_id: number
 
   @column({ })
-  public product_id: number
+  public prod_name: string
   
   @column({ })
   public sell_price: number

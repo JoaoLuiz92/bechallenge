@@ -26,10 +26,10 @@ export default class extends BaseSchema {
         .onDelete('CASCADE')
         .onUpdate('CASCADE')
 
-      table.integer('product_id')
+      table.integer('prod_name')
         .unsigned()
         .notNullable()
-      table.foreign('product_id')
+      table.foreign('prod_name')
         .references('id')
         .inTable('products')
         .onDelete('CASCADE')
