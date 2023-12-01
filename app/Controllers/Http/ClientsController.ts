@@ -1,5 +1,8 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Client from 'App/Models/Client'
+import Sale from 'App/Models/Sale'
+import SaleHasProduct from 'App/Models/SaleHasProduct'
+
 
 export default class ClientsController {
   public async index({}: HttpContextContract) {
@@ -17,13 +20,24 @@ export default class ClientsController {
     })
     console.log(client.$isPersisted) // true
     return client
-  }
-  public async show({request}: HttpContextContract) {
-    const clientId = request.param('id')
-    const client = await Client.find(clientId)
 
-    return client
   }
+  public async show({params}: HttpContextContract) {
+
+  const client = await Client.query()
+    .where('id', params.id)
+    .firstOrFail();
+
+
+  const sales = await SaleHasProduct.query()
+    .where('client_id', client.id)
+    .select('product_id','sales_id','sell_amount','sell_total')
+    .exec();
+
+  return { client, sales };
+
+
+ }
 
   public async edit({}: HttpContextContract) {}
 

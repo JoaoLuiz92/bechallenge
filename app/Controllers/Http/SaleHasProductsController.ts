@@ -10,8 +10,9 @@ export default class SaleHasProductsController {
   public async create({}: HttpContextContract) {}
 
   public async store({request}: HttpContextContract) {
-    const body = request.only(['sales_id','product_id','sell_price','sell_amount','sell_total',])
+    const body = request.only(['client_id','sales_id','product_id','sell_price','sell_amount','sell_total',])
     const salehasproducts = await SaleHasProduct.create({
+      client_id:body.client_id,
       sales_id:body.sales_id,
       product_id: body.product_id,
       sell_price: body.sell_price,

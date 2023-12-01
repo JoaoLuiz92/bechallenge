@@ -5,7 +5,18 @@ export default class extends BaseSchema {
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
+
       table.increments('id')
+
+      table.integer('client_id')
+      .unsigned()
+      .notNullable()
+    table.foreign('client_id')
+      .references('id')
+      .inTable('clients')
+      .onDelete('CASCADE')
+      .onUpdate('CASCADE')
+
       table.integer('sales_id')
         .unsigned()
         .notNullable()
@@ -14,6 +25,7 @@ export default class extends BaseSchema {
         .inTable('sales')
         .onDelete('CASCADE')
         .onUpdate('CASCADE')
+
       table.integer('product_id')
         .unsigned()
         .notNullable()
@@ -22,9 +34,15 @@ export default class extends BaseSchema {
         .inTable('products')
         .onDelete('CASCADE')
         .onUpdate('CASCADE')
-      table.double('sell_price').notNullable()
-      table.double('sell_amount').notNullable()
-      table.double('sell_total').notNullable()
+
+      table.double('sell_price')
+        .notNullable()
+
+      table.double('sell_amount')
+        .notNullable()
+
+      table.double('sell_total')
+        .notNullable()
 
 
       table.timestamps(true,true)

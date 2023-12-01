@@ -6,10 +6,14 @@ export default class extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.string('prod_name',255).notNullable()
-      table.double('price').notNullable()
-      table.string('category',255).notNullable()
-      table.double('prod_amount').notNullable()
+      table.string('prod_name',255)
+        .notNullable()
+      table.double('price')
+        .notNullable()
+      table.string('category',255)
+        .notNullable()
+      table.double('prod_amount')
+        .notNullable()
       
 
       table.timestamps(true,true)

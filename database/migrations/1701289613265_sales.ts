@@ -14,8 +14,10 @@ export default class extends BaseSchema {
         .inTable('clients')
         .onDelete('CASCADE')
         .onUpdate('CASCADE')
-      table.dateTime('date').notNullable()
-      table.double('total').notNullable()
+      table.dateTime('date')
+        .notNullable()
+      table.double('total')
+        .notNullable()
 
         table.timestamps(true,true)
     })
